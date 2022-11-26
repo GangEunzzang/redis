@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -14,8 +16,8 @@ public class BoardService {
 
     private final BoardRepository boardRepository;
 
-    public Board getList(Long id) {
-        return boardRepository.findAll(id);
+    public List<Board> getList() {
+        return boardRepository.findAll();
     }
 
 
