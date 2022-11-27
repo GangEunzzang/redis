@@ -1,6 +1,7 @@
 package com.example.redis.redis;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -36,7 +37,7 @@ public class RedisConfig {
                 redisConnectionFactory());
         RedisCacheConfiguration configuration = RedisCacheConfiguration.defaultCacheConfig()
                 .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer())) // Value Serializer 변경
-                .prefixKeysWith("Test:") // Key Prefix로 "Test:"를 앞에 붙여 저장
+//                .prefixKeysWith("Test:") // Key Prefix로 "Test:"를 앞에 붙여 저장
                 .entryTtl(Duration.ofMinutes(30)); // 캐시 수명 30분
         builder.cacheDefaults(configuration);
         return builder.build();

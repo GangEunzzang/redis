@@ -20,5 +20,13 @@ public class BoardService {
         return boardRepository.findAll();
     }
 
+    public Board getById(Long id) {
+        return boardRepository.findById(id).get();
+    }
+
+    public List<Board> getByWriter(String writer) {
+        return boardRepository.findByWriter(writer);
+    }
+
 
 }
