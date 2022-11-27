@@ -28,5 +28,9 @@ public class BoardService {
         return boardRepository.findByWriter(writer);
     }
 
+    public void register(String title, String content, String writer) {
+        Board board = Board.builder().title(title).content(content).writer(writer).build();
+        boardRepository.save(board);
+    }
 
 }

@@ -5,6 +5,7 @@ import com.example.redis.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -33,5 +34,9 @@ public class BoardController {
         return boardService.getByWriter(writer);
     }
 
+    @PostMapping("/register")
+    public void register(String title, String content, String writer){
+        boardService.register(title,content,writer);
+    }
 
 }
