@@ -3,6 +3,7 @@ package com.example.redis.controller;
 import com.example.redis.entity.Board;
 import com.example.redis.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,12 +29,13 @@ public class BoardController {
         return boardService.getById(id);
     }
 
-    @Cacheable(value = "List<Board>", key = "#writer", cacheManager = "cacheManager")
+    @Cacheable(value = "List<Board>", cacheManager = "cacheManager")
     @GetMapping("/writer")
     public List<Board> getByWriter(String writer) {
         return boardService.getByWriter(writer);
     }
 
+    @CachePut(key ="#writer")
     @PostMapping("/register")
     public void register(String title, String content, String writer){
         boardService.register(title,content,writer);
