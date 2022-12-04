@@ -5,6 +5,7 @@ import com.example.redis.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,9 @@ public class BoardController {
     }
 
     @Cacheable(value = "Board", key = "#id", cacheManager = "cacheManager")
+    @Caching({
+            @Cacheable(value = "board", key = "#id")
+    })
     @GetMapping("/get")
     public Board getById(Long id) {
         return boardService.getById(id);
