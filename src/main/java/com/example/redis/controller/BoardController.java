@@ -25,9 +25,7 @@ public class BoardController {
     }
 
     @Cacheable(value = "Board", key = "#id", cacheManager = "cacheManager")
-    @Caching({
-            @Cacheable(value = "board", key = "#id")
-    })
+//    @Caching()
     @GetMapping("/get")
     public Board getById(Long id) {
         return boardService.getById(id);
