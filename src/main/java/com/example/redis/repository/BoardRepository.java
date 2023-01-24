@@ -14,6 +14,5 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 
     List<Board> findByWriter(String writer);
 
-    @Override
     void delete(Board entity);
 }
