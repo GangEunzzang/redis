@@ -15,7 +15,6 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@EnableAsync
 public class BoardController {
 
     private final BoardService boardService;
